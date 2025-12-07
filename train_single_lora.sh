@@ -1,6 +1,6 @@
 MODEL_NAME="stabilityai/stable-diffusion-xl-base-1.0"
 
-for SUBJECT in duck_toy dog6 robot_toy backpack_dog vase poop_emoji bear_plushie clock; do
+for SUBJECT in duck_toy robot_toy backpack_dog poop_emoji bear_plushie clock; do
     mkdir -p "single-lora/$SUBJECT"
     OUTPUT_DIR="single-lora/$SUBJECT"
     INSTANCE_DIR="../dreambooth/dataset/$SUBJECT"

@@ -1,6 +1,6 @@
 MODEL_NAME="stabilityai/stable-diffusion-xl-base-1.0"
 
-SUBJECTS=(duck_toy dog6 robot_toy backpack_dog vase poop_emoji bear_plushie clock)
+SUBJECTS=(duck_toy robot_toy backpack_dog poop_emoji bear_plushie clock)
 
 for ((i=0; i<${#SUBJECTS[@]}; i++)); do
     for ((j=i+1; j<${#SUBJECTS[@]}; j++)); do
