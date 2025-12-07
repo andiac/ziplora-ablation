@@ -7,6 +7,8 @@ Our experimental results show that when image generation is performed using exac
 This raises an important question: **Does mathematical orthogonality necessarily imply semantic disentanglement?** For a deeper discussion, please refer to our related work:
 **[Rethinking Inter-LoRA Orthogonality in Adapter Merging: Insights from Orthogonal Monte Carlo Dropout](https://arxiv.org/abs/2510.03262).**
 
+![showcase](showcase-with-text.png)
+
 ## Installation
 
 Please note the versions of the following libraries:
