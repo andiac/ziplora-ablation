@@ -21,10 +21,10 @@ pip install diffusers==0.24.0 huggingface_hub==0.21.4 transformers==4.36.0
 
 Please download [DreamBooth](https://github.com/google/dreambooth) and place it in a directory at the same level as this repository.
 
+Then, 
+
 ```
-bash train_single_lora.sh
-bash train_zip_lora.sh
-bash generate.sh
+bash run_all.sh
 ```
 
 ## Citation
