@@ -15,6 +15,13 @@ Please note the versions of the following libraries:
 pip install diffusers==0.24.0 huggingface_hub==0.21.4 transformers==4.36.0
 ```
 
+## Usage
+
+```
+bash train_single_lora.sh
+bash train_zip_lora.sh
+```
+
 ## Citation
 
 If you find this repository helpful for your research, please consider citing our paper:
