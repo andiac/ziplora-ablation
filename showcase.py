@@ -2,6 +2,7 @@ from PIL import Image
 
 subjects = ["duck_toy", "robot_toy", "backpack_dog", "poop_emoji", "bear_plushie", "clock"]
 subject_pairs = [("duck_toy", "backpack_dog"),
+                 ("duck_toy", "robot_toy"),
                  ("robot_toy", "poop_emoji"),
                  ("robot_toy", "bear_plushie"),
                  ("backpack_dog", "poop_emoji"),
@@ -12,8 +13,9 @@ def show_images(images, suffix=""):
     img_size = 256
     images = [image.resize((img_size, img_size)) for image in images]
 
-    # create a new image with 6 columns and 3 rows
-    new_image = Image.new("RGB", (img_size * 6, img_size * 3))
+    # create a new image with 6 columns
+    assert len(images) % 6 == 0
+    new_image = Image.new("RGB", (img_size * 6, img_size * (len(images) // 6)))
     for i in range(len(images)):
         new_image.paste(images[i], (i % 6 * img_size, i // 6 * img_size))
 
@@ -37,7 +39,7 @@ def show_images(images, suffix=""):
         buf.seek(0)
         return Image.open(buf)
 
-    final_image = Image.new("RGB", (img_size * 6, img_size * 3 + header_height), "white")
+    final_image = Image.new("RGB", (img_size * 6, img_size * (len(images) // 6) + header_height), "white")
     final_image.paste(new_image, (0, header_height))
 
     for i, label in enumerate(labels):
@@ -67,11 +69,11 @@ for i in range(len(subjects)):
         subject1 = subjects[i]
         subject2 = subjects[j]
 
-    images.append(Image.open(f"single-lora/{subject1}/test_images/final_image_00.png"))
-    images.append(Image.open(f"single-lora/{subject2}/test_images/final_image_00.png"))
+        images.append(Image.open(f"single-lora/{subject1}/test_images/final_image_00.png"))
+        images.append(Image.open(f"single-lora/{subject2}/test_images/final_image_00.png"))
 
-    for lambda_ in lambdas:
-        image = Image.open(f"outputs/{subject1}-{subject2}-lambda-{lambda_}.png")
-        images.append(image)
+        for lambda_ in lambdas:
+            image = Image.open(f"outputs/{subject1}-{subject2}-lambda-{lambda_}.png")
+            images.append(image)
 
 show_images(images, suffix="-all")
