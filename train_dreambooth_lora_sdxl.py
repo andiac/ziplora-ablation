@@ -1863,6 +1863,13 @@ def main(args):
                     for _ in range(args.num_validation_images)
                 ]
 
+                # Save validation images to files
+                validation_images_dir = os.path.join(args.output_dir, "validation_images")
+                os.makedirs(validation_images_dir, exist_ok=True)
+                for i, image in enumerate(images):
+                    image.save(os.path.join(validation_images_dir, f"epoch_{epoch:04d}_image_{i:02d}.png"))
+                logger.info(f"Saved {len(images)} validation images to {validation_images_dir}")
+
                 for tracker in accelerator.trackers:
                     if tracker.name == "tensorboard":
                         np_images = np.stack([np.asarray(img) for img in images])
@@ -1964,10 +1971,17 @@ def main(args):
             )
             images = [
                 pipeline(
-                    args.validation_prompt, num_inference_steps=25, generator=generator
+                    args.validation_prompt, num_inference_steps=50, generator=generator
                 ).images[0]
                 for _ in range(args.num_validation_images)
             ]
+
+            # Save final test images to files
+            test_images_dir = os.path.join(args.output_dir, "test_images")
+            os.makedirs(test_images_dir, exist_ok=True)
+            for i, image in enumerate(images):
+                image.save(os.path.join(test_images_dir, f"final_image_{i:02d}.png"))
+            logger.info(f"Saved {len(images)} test images to {test_images_dir}")
 
             for tracker in accelerator.trackers:
                 if tracker.name == "tensorboard":
