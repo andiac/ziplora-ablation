@@ -3,6 +3,7 @@ from PIL import Image
 subjects = ["duck_toy", "robot_toy", "backpack_dog", "poop_emoji", "bear_plushie", "clock"]
 subject_pairs = [("duck_toy", "backpack_dog"),
                  ("duck_toy", "robot_toy"),
+                 ("duck_toy", "bear_plushie"),
                  ("robot_toy", "poop_emoji"),
                  ("robot_toy", "bear_plushie"),
                  ("backpack_dog", "poop_emoji"),
